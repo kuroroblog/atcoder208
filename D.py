@@ -1,7 +1,7 @@
 # 標準入力を受け付ける。
 N, M = map(int, input().split())
 
-# 都市間の移動ができない数字を表す
+# 都市間の移動ができない、移動時間を表す
 INF = 1000000000000000000
 
 # 都市間の移動時間情報を格納する。
@@ -21,9 +21,9 @@ ans = 0
 for k in range(N):
     for i in range(N):
         for j in range(N):
-            # Start ⏩ Goal or Start ⏩ 都市x ⏩ Goalの最短経路を求める。
+            # Start ⏩ Goal or Start ⏩ 都市x ⏩ Goalの最小移動時間を求める。
             time[i][j] = min(time[i][j], time[i][k] + time[k][j])
-            # 都市間の移動ができない数字の場合、答えにしない。
+            # 都市間の移動ができない、移動時間の場合、答えに含まない。
             if time[i][j] == INF:
                 continue
             ans += time[i][j]
